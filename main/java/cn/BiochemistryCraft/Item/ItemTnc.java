@@ -35,8 +35,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-
-
 public class ItemTnc extends BCCItemBase{
 	
 	public World world;
@@ -49,7 +47,7 @@ public class ItemTnc extends BCCItemBase{
 		this.setItem("EmptyNeedle", true);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(1);
-		//GameRegistry.registerItem(this, "空针筒");
+		//GameRegistry.registerItem(this, "绌洪拡绛�");
 	}
 	
     public boolean itemInteractionForEntity(ItemStack i, EntityPlayer e, EntityLivingBase el)

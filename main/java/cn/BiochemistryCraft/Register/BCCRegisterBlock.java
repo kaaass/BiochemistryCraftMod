@@ -3,18 +3,30 @@ package cn.BiochemistryCraft.Register;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cn.BiochemistryCraft.Block.BlockBioDirt;
 import cn.BiochemistryCraft.Block.BlockBioExtracter;
+import cn.BiochemistryCraft.Block.BlockHerbsCorps;
+import cn.BiochemistryCraft.Item.ItemHerbs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 
 public class BCCRegisterBlock {
 	
 	public static Block biodirt;
 	public static Block bioextracter;
 	
+	public static Block fireGrassCorp;
+	public static Block coolGrassCorp;
+	
+	public static Block[] herbsCorpArray = {fireGrassCorp, coolGrassCorp};
+	
 	public BCCRegisterBlock()
 	{
 		biodirt = new BlockBioDirt(Material.grass);
 		bioextracter=new BlockBioExtracter(Material.wood);
+		
+		for(int i = 0; i <= 1; i++){
+			herbsCorpArray[i] = new BlockHerbsCorps(i);
+		}
 	}
 	
 	
@@ -26,6 +38,9 @@ public class BCCRegisterBlock {
 		GameRegistry.registerBlock(biodirt, "BioDirt");
 		GameRegistry.registerBlock(bioextracter, "BioExtracter");
 		
+		for(int i = 0; i <= 1; i++){
+			GameRegistry.registerBlock(herbsCorpArray[i], BlockHerbsCorps.getName(i));
+		}
 	}
 
 }

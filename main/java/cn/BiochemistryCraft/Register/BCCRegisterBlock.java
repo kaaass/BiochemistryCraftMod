@@ -1,6 +1,7 @@
 package cn.BiochemistryCraft.Register;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import cn.BiochemistryCraft.Block.BlockAcid;
 import cn.BiochemistryCraft.Block.BlockBioDirt;
 import cn.BiochemistryCraft.Block.BlockBioExtracter;
 import cn.BiochemistryCraft.Block.BlockHerbsCorps;
@@ -13,6 +14,7 @@ public class BCCRegisterBlock {
 	
 	public static Block biodirt;
 	public static Block bioextracter;
+	public static Block acid;
 	
 	public static Block fireGrassCorp;
 	public static Block coolGrassCorp;
@@ -23,6 +25,7 @@ public class BCCRegisterBlock {
 	{
 		biodirt = new BlockBioDirt(Material.grass);
 		bioextracter=new BlockBioExtracter(Material.wood);
+		acid=new BlockAcid(Material.clay);
 		
 		for(int i = 0; i <= 1; i++){
 			herbsCorpArray[i] = new BlockHerbsCorps(i, BCCRegisterBlock.biodirt);

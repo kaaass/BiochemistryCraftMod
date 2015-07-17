@@ -44,7 +44,7 @@ public class BiochemistryCraft{
 	public static BCCRegisterBlock blockregister;
 	public static BCCRegisterItem itemregister;
 	public static BCCEntityRegister entityregister;
-	public static BCCRegisterEvent eventRegister = new BCCRegisterEvent();;
+	public static BCCRegisterEvent eventRegister = new BCCRegisterEvent();
 	//public static IGuiHandler guihandler;
 	
 	public static final CreativeTabs biocreativetab=new BCCCreativeTab("BiochemistryCraft");
@@ -59,6 +59,7 @@ public class BiochemistryCraft{
 		blockregister.blockRegisterInit();
 		itemregister.ItemRegisterInit();
 		entityregister.EntityRegisterInit();
+		entityregister.EntityRenderRegisterInit();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new BioGuiHandler());
 	}

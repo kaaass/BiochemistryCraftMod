@@ -10,6 +10,7 @@ public class BCCRegisterItem {
 	
 	public static Item emptyneedle;
 	public static Item biobrain;
+	public static Item acidwand;
 	
 	public static Item cowblood;
 	public static Item pigblood;
@@ -92,9 +93,10 @@ public class BCCRegisterItem {
 			herbsArray[i].setCreativeTab(BiochemistryCraft.biocreativetab);
 			herbsArray[i].setUnlocalizedName(ItemHerbs.herbsArray[i]);
 			herbsArray[i].setTextureName(BiochemistryCraft.MODID+":"+ItemHerbs.herbsArray[i]);
-		}
+		}	
 		emptyneedle = new ItemTnc();
 		biobrain = new ItemBioBrain();
+		acidwand = new ItemAcidWand();
 	}
 	
 	public void ItemRegisterInit(){
@@ -102,6 +104,7 @@ public class BCCRegisterItem {
 		
 		GameRegistry.registerItem(emptyneedle, "EmptyNeedle");
 		GameRegistry.registerItem(biobrain, "BioBrain");
+		GameRegistry.registerItem(acidwand, "AcidWand");
 		
 		for(int i=0;i<22;i++)
 		{

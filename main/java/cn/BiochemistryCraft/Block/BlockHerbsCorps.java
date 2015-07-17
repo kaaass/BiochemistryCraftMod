@@ -8,6 +8,7 @@ import javax.swing.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import cn.BiochemistryCraft.BiochemistryCraft;
+import cn.BiochemistryCraft.Item.ItemHerbs;
 import cn.BiochemistryCraft.Register.BCCRegisterItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
@@ -22,14 +23,16 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockHerbsCorps extends BlockCrops{
 	public static final String[] herbsArray = new String[] {"fireGrassCorp","coolGrassCorp"};
+	private static Block soil;
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
 	
-	public BlockHerbsCorps(int id){
+	public BlockHerbsCorps(int id, Block soil){
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
         setTickRandomly(true);
         setBlockTextureName(BiochemistryCraft.MODID+":"+herbsArray[id]);
+        this.soil = soil;
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -83,16 +86,34 @@ public class BlockHerbsCorps extends BlockCrops{
 	}
 	
 	public void updateTick (World world, int x, int y, int z, Random random) {
-        if (world.getBlockMetadata(x, y, z) == 1) {
-            return;
-        }
-        if (random.nextInt(isFertile(world, x, y - 1, z) ? 12 : 25) != 0) {
-            return;
-        }
-        world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+		if(world.getBlockLightValue(x, y, z) >= 6){
+			if (world.getBlockMetadata(x, y, z) == 1) {
+				return;
+			}
+			if (random.nextInt(isFertile(world, x, y - 1, z) ? 12 : 25) != 0) {
+				return;
+			}
+			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+		}
     }
+	
+	public void onNeighborBlockChange (World world, int x, int y, int z, int neighborId) {
+		System.out.println(!canBlockStay(world, x, y, z));
+	    if (!canBlockStay(world, x, y, z)) {
+	        dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+	        world.setBlock(x, y, z, Blocks.air);
+	    }
+	}
 	
 	public static String getName(int id){
 		return herbsArray[id].substring(0,1).toUpperCase()+herbsArray[id].substring(1,herbsArray[id].length());
+	}
+	
+	protected boolean canPlaceBlockOn(Block arg0){
+	    return arg0 == soil;
+	}
+	
+	public boolean canBlockStay(World arg0, int arg1, int arg2, int arg3){
+		return canPlaceBlockOn(arg0.getBlock(arg1, arg2 - 1, arg3));
 	}
 }

@@ -57,8 +57,8 @@ public class BCCRegisterItem {
 	public static Item witchbloodessence;
 	public static Item zombiebloodessence;
 	
-	public static Item fireGrass;
-	public static Item coolGrass;
+	public static ItemHerbs fireGrass;
+	public static ItemHerbs coolGrass;
 	
 	public static Item[] bloodgr = {cowblood, pigblood, chickenblood, wolfblood, playerblood, batblood, horseblood, mushroomblood, ocelotblood, sheepblood, squidblood,
 		cavespiderblood, creeperblood, endermanblood, ghostblood, magmacubeblood, pigzombieblood, silverfishblood, slimeblood, spiderblood, witchblood, zombieblood};
@@ -67,7 +67,7 @@ public class BCCRegisterItem {
 		cavespiderbloodessence, creeperbloodessence, endermanbloodessence, ghostbloodessence, magmacubebloodessence,
 		pigzombiebloodessence, silverfishbloodessence, slimebloodessence, spiderbloodessence, witchbloodessence, zombiebloodessence};
 	
-	public static Item[] herbsArray = {fireGrass, coolGrass};
+	public static ItemHerbs[] herbsArray = {fireGrass, coolGrass};
 	
 	public BCCRegisterItem()
 	{

@@ -21,6 +21,7 @@ public class ItemHerbs extends ItemFood implements IPlantable{
 	
 	public ItemHerbs(int healAmount, float saturationModifier, Block cropBlock, Block soilBlock, int id) {
 		super(healAmount, saturationModifier, false);
+		//effectSetting(id);
 		this.cropBlock = cropBlock;
 		this.soilBlock = soilBlock;
 	}
@@ -34,7 +35,7 @@ public class ItemHerbs extends ItemFood implements IPlantable{
 			return false;
 		}else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack)){
             Block soil = par3World.getBlock(par4, par5, par6);
-            if (soil != null && soil == soilBlock && par3World.isAirBlock(par4, par5 + 1, par6)) {
+            if (soil != null && canPlaceBlockOn(soil) && par3World.isAirBlock(par4, par5 + 1, par6)) {
                 par3World.setBlock(par4, par5 + 1, par6, this.cropBlock);
                 --par1ItemStack.stackSize;
                 return true;
@@ -64,4 +65,29 @@ public class ItemHerbs extends ItemFood implements IPlantable{
 	public static String getName(int id){
 		return herbsArray[id].substring(0,1).toUpperCase()+herbsArray[id].substring(1,herbsArray[id].length());
 	}
+	
+	private boolean canPlaceBlockOn(Block arg0){
+		return arg0==soilBlock;
+	}
+	
+	public Block getCropBlock(){
+		return cropBlock;
+	}
+	
+	public Block getSoilBlock(){
+		return soilBlock;
+	}
+	/*
+	//这部分是用来增加使用后的药水效果的，先留着好了=。=
+	private void effectSetting(int id){
+		switch(id){
+		case 0: //火炎草
+			setPotionEffect("");
+			break;
+		case 1: //清凉草
+			setPotionEffect("");
+			break;
+		}
+	}
+	*/
 }

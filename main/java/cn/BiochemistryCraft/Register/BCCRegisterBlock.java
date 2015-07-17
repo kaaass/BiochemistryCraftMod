@@ -25,7 +25,7 @@ public class BCCRegisterBlock {
 		bioextracter=new BlockBioExtracter(Material.wood);
 		
 		for(int i = 0; i <= 1; i++){
-			herbsCorpArray[i] = new BlockHerbsCorps(i);
+			herbsCorpArray[i] = new BlockHerbsCorps(i, BCCRegisterBlock.biodirt);
 		}
 	}
 	
